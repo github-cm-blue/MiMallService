@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MiMall.Model</name>
+    </assembly>
+    <members>
+        <member name="P:MiMall.Model.Entity.TableModel`1.status">
+            <summary>
+            0表示正常
+            </summary>
+        </member>
+        <member name="P:MiMall.Model.Entity.TableModel`1.message">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="P:MiMall.Model.Entity.TableModel`1.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:MiMall.Model.Entity.TModel`1.status">
+            <summary>
+            0表示正常
+            </summary>
+        </member>
+        <member name="P:MiMall.Model.Entity.TModel`1.message">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="P:MiMall.Model.Entity.TModel`1.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+    </members>
+</doc>

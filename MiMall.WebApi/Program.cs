@@ -28,7 +28,7 @@ namespace MiMall.WebApi
                     .MinimumLevel.Debug()
                     .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Error)
                     .WriteTo.File(
-                        path: Path.Combine("Logger", "Logger.log"),
+                        path: Path.Combine("logs", "log.log"),
                         rollingInterval: RollingInterval.Day
                         );
                 })

@@ -4,27 +4,27 @@
         <name>MiMall.WebApi</name>
     </assembly>
     <members>
-        <member name="P:MiMall.WebApi.AuthHelper.JwtModel.SigningKey">
+        <member name="P:MiMall.WebApi.Auth.JwtAuthModel.SigningKey">
             <summary>
             密钥
             </summary>
         </member>
-        <member name="P:MiMall.WebApi.AuthHelper.JwtModel.Issuer">
+        <member name="P:MiMall.WebApi.Auth.JwtAuthModel.Issuer">
             <summary>
             发行人
             </summary>
         </member>
-        <member name="P:MiMall.WebApi.AuthHelper.JwtModel.Audience">
+        <member name="P:MiMall.WebApi.Auth.JwtAuthModel.Audience">
             <summary>
             订阅人
             </summary>
         </member>
-        <member name="P:MiMall.WebApi.AuthHelper.JwtModel.AccessExpiration">
+        <member name="P:MiMall.WebApi.Auth.JwtAuthModel.AccessExpiration">
             <summary>
             过期时间
             </summary>
         </member>
-        <member name="P:MiMall.WebApi.AuthHelper.JwtModel.RefreshExpiration">
+        <member name="P:MiMall.WebApi.Auth.JwtAuthModel.RefreshExpiration">
             <summary>
             刷新时间
             </summary>

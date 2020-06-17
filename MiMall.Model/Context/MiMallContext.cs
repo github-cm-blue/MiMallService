@@ -30,7 +30,7 @@ namespace MiMall.Model.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=MiMall;User ID=sa;Password=123456");
+                optionsBuilder.UseSqlServer("Data Source=111.230.171.47;Initial Catalog=MiMall;User ID=lcm;Password=ruanjian3");
             }
         }
 

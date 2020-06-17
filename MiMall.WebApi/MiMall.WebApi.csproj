@@ -26,15 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AuthHelper\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MiMall.IRepository\MiMall.IRepository.csproj" />
     <ProjectReference Include="..\MiMall.IService\MiMall.IService.csproj" />
     <ProjectReference Include="..\MiMall.Model\MiMall.Model.csproj" />
     <ProjectReference Include="..\MiMall.Repository\MiMall.Repository.csproj" />
     <ProjectReference Include="..\MiMall.Service\MiMall.Service.csproj" />
   </ItemGroup>
+
 
 </Project>

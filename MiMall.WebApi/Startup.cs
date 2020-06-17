@@ -20,6 +20,7 @@ using MiMall.IService;
 using MiMall.Model.Context;
 using MiMall.Repository;
 using MiMall.Service;
+using MiMall.WebApi.Auth;
 using MiMall.WebApi.AuthHelper;
 
 namespace MiMall.WebApi
@@ -95,7 +96,7 @@ namespace MiMall.WebApi
             #endregion
 
             #region Authentication && JWT
-            JwtModel model = Configuration.GetSection("JwtModel").Get<JwtModel>();
+            JwtAuthModel model = Configuration.GetSection("JwtAuthModel").Get<JwtAuthModel>();
             services.AddAuthentication("Bearer")
                 .AddJwtBearer(options =>
                 {

@@ -12,10 +12,11 @@ using MiMall.Model.Models;
 
 namespace MiMall.WebApi.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]")]
     [EnableCors("any")]
     public class UsersController : ControllerBase
     {
+
         private readonly ILogger<UsersController> _logger;
         private readonly IUsersService _usersService;
         public UsersController(ILogger<UsersController> logger, IUsersService usersService)
@@ -24,22 +25,17 @@ namespace MiMall.WebApi.Controllers
             _usersService = usersService;
         }
 
-        private static int skip = 0;
         [HttpGet]
-        public TableModel<Users> GetList(int pageSize)
+        public TModel<Users> GetModel(int id)
         {
-            if (skip > 0)
-            {
-                skip += pageSize;
-            }
-            var list = _usersService.GetPage<int>(u => u.UserId > 0, o => o.UserId, true, skip, pageSize);
 
-            return new TableModel<Users>()
+            return new TModel<Users>()
             {
                 status = 0,
-                message = string.Empty,
-                Data = list
+                message = "success",
+                Data = _usersService.Find(id)
             };
+
         }
 
 

@@ -29,5 +29,35 @@
             刷新时间
             </summary>
         </member>
+        <member name="M:MiMall.WebApi.Controllers.ShoppingCartController.GetMyCartCount">
+            <summary>
+            获取我的购物车商品数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MiMall.WebApi.Controllers.UsersController.Login(System.String,System.String)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="username">用户名</param>
+            <param name="password">密码</param>
+        </member>
+        <member name="M:MiMall.WebApi.Controllers.UsersController.RefreshToken(System.String)">
+            <summary>
+            刷新token
+            </summary>
+        </member>
+        <member name="M:MiMall.WebApi.Controllers.UsersController.GenerateRefreshToken">
+            <summary>
+            生成刷新Token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MiMall.WebApi.Controllers.UsersController.GetUserInfo">
+            <summary>
+            获取用户信息
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>

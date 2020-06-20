@@ -20,7 +20,7 @@ namespace MiMall.Model.Entity
         /// <summary>
         /// 数据
         /// </summary>
-        public Task<List<T>> Data { get; set; }
+        public List<T> Data { get; set; }
 
     }
 }

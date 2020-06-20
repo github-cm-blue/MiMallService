@@ -21,7 +21,6 @@ using MiMall.Model.Context;
 using MiMall.Repository;
 using MiMall.Service;
 using MiMall.WebApi.Auth;
-using MiMall.WebApi.AuthHelper;
 
 namespace MiMall.WebApi
 {
@@ -118,7 +117,7 @@ namespace MiMall.WebApi
                         OnMessageReceived = context =>
                         {
                             //接收到请求消息后调用 (在Url中添加access_token=[token])
-                            context.Token = context.Request.Query["access_token"];
+                            context.Token = context.Request.Cookies["access_token"];
                             return Task.CompletedTask;
                         },
                         OnTokenValidated = context =>
@@ -128,17 +127,27 @@ namespace MiMall.WebApi
                         },
                         OnAuthenticationFailed = context =>
                         {
+                            if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                            {
+                                context.Response.Headers.Add("act", "expired");
+                            }
+
                             //在token验证失败后调用
                             return Task.CompletedTask;
                         },
                         OnChallenge = context =>
                         {
-                            //未授权是调用
+                            //未授权时调用
+                            return Task.CompletedTask;
+                        },
+                        OnForbidden = context =>
+                        {
+                            //被禁止时调用
                             return Task.CompletedTask;
                         }
 
                     };
-                });
+                });//.AddCookie();
 
             #endregion
 
@@ -148,6 +157,7 @@ namespace MiMall.WebApi
                 options.AddPolicy("Client", policy => policy.RequireRole("Client").Build());
                 //或
                 options.AddPolicy("SystemOrAdmin", policy => policy.RequireRole("System", "Admin").Build());
+                options.AddPolicy("everyone", policy => policy.RequireRole("System", "Admin", "Client", "Partner").Build());
                 //并
                 options.AddPolicy("SystemAndAdmin", policy => policy.RequireRole("System")
                                 .RequireRole("Admin").Build());
@@ -166,6 +176,10 @@ namespace MiMall.WebApi
             });
             #endregion
 
+            #region Cookie
+
+
+            #endregion
 
         }
 

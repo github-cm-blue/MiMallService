@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MiMall.IService.IServices;
 using MiMall.Model.Entity;
+using MiMall.Model.Models;
 
 namespace MiMall.WebApi.Controllers
 {
@@ -38,7 +39,7 @@ namespace MiMall.WebApi.Controllers
             {
                 return new TModel<int>()
                 {
-                    status = 10,
+                    status = 0,
                     message = "token过期",
                     Data = 0
                 };
@@ -68,5 +69,55 @@ namespace MiMall.WebApi.Controllers
 
 
         }
+
+        /// <summary>
+        /// 添加商品到购物车
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public TModel<bool> AddProductToCart(int productId)
+        {
+            string token = Request.Cookies["access_token"];
+            if (string.IsNullOrEmpty(token))
+            {
+                return new TModel<bool>()
+                {
+                    status = 10,
+                    message = "token过期",
+                    Data = false
+                };
+            }
+
+            //方式一：JwtSecurityTokenHandler中的ReadJwtToken()方法获取
+            JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+            JwtSecurityToken jwtSecurityToken = handler.ReadJwtToken(token);
+            //string userId = jwtSecurityToken["sub"];
+            string userId = string.Empty;
+            jwtSecurityToken.Claims.ToList().ForEach(item =>
+            {
+                if (item.Type == JwtRegisteredClaimNames.Sub)
+                {
+                    userId = item.Value;
+                }
+            });
+
+            int i = _shoppingCartService.Add(new ShoppingCart()
+            {
+                Num = 1,
+                ProductId = productId,
+                UserId = int.Parse(userId)
+
+            }).Result;
+
+            return new TModel<bool>()
+            {
+                status = 0,
+                message = "success",
+                Data = i > 0
+            };
+
+        }
+
+
     }
 }

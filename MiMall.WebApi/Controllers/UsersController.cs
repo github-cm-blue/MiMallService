@@ -10,13 +10,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using MiMall.Common.Enum;
+using MiMall.Common.Factory;
+using MiMall.Common.IFactory;
 using MiMall.IService.IServices;
 using MiMall.Model.Entity;
 using MiMall.Model.Models;
 using MiMall.WebApi.Auth;
+using StackExchange.Redis;
 
 namespace MiMall.WebApi.Controllers
 {
@@ -29,14 +34,17 @@ namespace MiMall.WebApi.Controllers
         private readonly IUsersService _usersService;
         private readonly IConfiguration _configuration;
         private readonly IUserRoleService _userRoleService;
+        private readonly IRedisFactory _redisFactory;
         public UsersController(ILogger<UsersController> logger, IUsersService usersService, IConfiguration configuration,
-            IUserRoleService userRoleService)
+            IUserRoleService userRoleService, IRedisFactory redisFactory)
         {
             _logger = logger;
             _usersService = usersService;
             _configuration = configuration;
             _userRoleService = userRoleService;
+            _redisFactory = redisFactory;
         }
+
 
         [Authorize("SystemOrAdmin")]
         [HttpGet]
@@ -115,6 +123,8 @@ namespace MiMall.WebApi.Controllers
                 //获取token
                 string cookie = Request.Cookies["access_token"];
 
+
+
                 return new TModel<dynamic>()
                 {
                     status = 0,
@@ -167,7 +177,7 @@ namespace MiMall.WebApi.Controllers
             {
                 return new TModel<Users>()
                 {
-                    status = 10,
+                    status = 0,
                     message = "token过期",
                     Data = null
                 };

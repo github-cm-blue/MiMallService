@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MiMall.Common\MiMall.Common.csproj" />
     <ProjectReference Include="..\MiMall.IRepository\MiMall.IRepository.csproj" />
     <ProjectReference Include="..\MiMall.IService\MiMall.IService.csproj" />
     <ProjectReference Include="..\MiMall.Model\MiMall.Model.csproj" />

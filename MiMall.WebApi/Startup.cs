@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MiMall.Common.Redis;
 using MiMall.IRepository;
 using MiMall.IService;
 using MiMall.Model.Context;
@@ -37,6 +38,13 @@ namespace MiMall.WebApi
         {
             services.AddControllers();
 
+            bool enable = Configuration.GetSection("Redis:Enabled").Get<bool>();
+            if (enable)
+            {
+
+            }
+
+            Console.WriteLine();
             #region swagger
             services.AddSwaggerGen(options =>
             {
@@ -176,11 +184,6 @@ namespace MiMall.WebApi
             });
             #endregion
 
-            #region Cookie
-
-
-            #endregion
-
         }
 
         //Autofac DI
@@ -203,11 +206,18 @@ namespace MiMall.WebApi
             builder.RegisterGeneric(typeof(BaseRepository<>)).As(typeof(IBaseRepository<>));
             builder.RegisterGeneric(typeof(BaseService<>)).As(typeof(IBaseService<>));
 
-
+            //注册仓储服务
             builder.RegisterAssemblyTypes(list.ToArray())
                 .Where(a => a.Name.EndsWith("Repository") || a.Name.EndsWith("Service"))
                 .PublicOnly()
                 .Where(s => s.IsClass)
+                .AsImplementedInterfaces();
+            //注册工厂服务
+            builder.RegisterAssemblyTypes(list.ToArray())
+                .Where(a => a.Name.EndsWith("Factory"))
+                .Where(s => s.IsClass)
+                .PublicOnly()
+                .InstancePerLifetimeScope()
                 .AsImplementedInterfaces();
         }
 

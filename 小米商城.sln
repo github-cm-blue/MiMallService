@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiMall.Service", "MiMall.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiMall.Model", "MiMall.Model\MiMall.Model.csproj", "{F3BC0A87-FEF2-4D9C-A4FE-F539B859A708}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiMall.WebApi", "MiMall.WebApi\MiMall.WebApi.csproj", "{B0C67385-8FC5-4827-A9DB-BE7165BDC0FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiMall.WebApi", "MiMall.WebApi\MiMall.WebApi.csproj", "{B0C67385-8FC5-4827-A9DB-BE7165BDC0FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiMall.Common", "MiMall.Common\MiMall.Common.csproj", "{1CDF1180-9B4D-41B1-9DA1-2A7924528762}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{B0C67385-8FC5-4827-A9DB-BE7165BDC0FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0C67385-8FC5-4827-A9DB-BE7165BDC0FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0C67385-8FC5-4827-A9DB-BE7165BDC0FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CDF1180-9B4D-41B1-9DA1-2A7924528762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDF1180-9B4D-41B1-9DA1-2A7924528762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDF1180-9B4D-41B1-9DA1-2A7924528762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDF1180-9B4D-41B1-9DA1-2A7924528762}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

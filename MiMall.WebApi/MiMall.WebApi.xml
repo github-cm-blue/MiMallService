@@ -29,9 +29,39 @@
             刷新时间
             </summary>
         </member>
+        <member name="M:MiMall.WebApi.Controllers.ProductsController.GetList(System.Int32)">
+            <summary>
+            导航条列表数据
+            </summary>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MiMall.WebApi.Controllers.ProductsController.getProductInfoById(System.Int32)">
+            <summary>
+            根据商品id获取商品详情
+            </summary>
+        </member>
+        <member name="M:MiMall.WebApi.Controllers.ProductsController.getCategoryProducts(System.String,System.Int32)">
+            <summary>
+            获取分类商品列表
+            </summary>
+        </member>
+        <member name="M:MiMall.WebApi.Controllers.ProductsController.getProductInfo(System.Int32)">
+            <summary>
+            获取商品信息
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
         <member name="M:MiMall.WebApi.Controllers.ShoppingCartController.GetMyCartCount">
             <summary>
             获取我的购物车商品数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MiMall.WebApi.Controllers.ShoppingCartController.AddProductToCart(System.Int32)">
+            <summary>
+            添加商品到购物车
             </summary>
             <returns></returns>
         </member>
